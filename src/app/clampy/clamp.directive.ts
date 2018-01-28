@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Input, Renderer2, SecurityContext } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Input, Renderer2, SecurityContext, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as clampy_ from '@clampy-js/clampy/dist/clampy.umd.js';
 import isNil from 'lodash-es/isNil';
@@ -19,11 +19,10 @@ export class ClampDirective implements AfterViewInit {
    * string. Auto will try to fill up the available space with the content and
    * then automatically clamp once content no longer fits.
    *
-   * @private
    * @type {string}
    * @memberof ClampDirective
    */
-  @Input() private clampy: string;
+  @Input() public clampy: string;
 
   /**
      * Sometimes you need to apply an ellipsis on HTML content. The prefered Angular way to usually do this is to bind the
@@ -33,23 +32,29 @@ export class ClampDirective implements AfterViewInit {
      * To counter this, you can instead bind it to the htgEllipsisContent attribute.
      * The content will be automatically sanitized by the directive so that only safe HTML content will be present.
      *
-     * @private
      * @type {string}
      * @memberof ClampDirective
      */
-  @Input() private clampyContent: string;
+  @Input() public clampyContent: string;
 
   /**
    * The character to insert at the end of the HTML element after truncation is
    * performed. This defaults to an ellipsis (…).
    *
-   * @private
    * @type {string}
    * @memberof ClampDirective
    */
-  @Input() private clampyTruncationCharacter: string;
+  @Input() public clampyTruncationCharacter: string;
 
-  private originalContent: string;
+  /**
+   * The original content before any ellipsis applied.
+   *
+   * @type {EventEmitter<string>}
+   * @memberof ClampDirective
+   */
+  @Output() public originalContent: EventEmitter<string> = new EventEmitter<string>();
+
+  private initialContent: string;
 
   constructor(
     private elementRef: ElementRef,
@@ -60,19 +65,21 @@ export class ClampDirective implements AfterViewInit {
   ngAfterViewInit(): void {
     const element: HTMLElement = this.elementRef.nativeElement;
     if (isNil(this.clampyContent)) {
-      this.originalContent = element.innerHTML;
+      this.initialContent = element.innerHTML;
     } else {
-      this.originalContent = this.sanitizer.sanitize(SecurityContext.HTML, this.clampyContent);
+      this.initialContent = this.sanitizer.sanitize(SecurityContext.HTML, this.clampyContent);
     }
 
-    element.innerHTML = this.originalContent;
+    this.originalContent.emit(this.initialContent);
+
+    element.innerHTML = this.initialContent;
 
     // Set the opactity to 0 to avoid content to flick when clamping.
     this.renderer.setStyle(element, 'opacity', 0);
 
     // Set back the element content to the original before clamping.
     // This is necessary when the container grows back.
-    element.innerHTML = this.originalContent;
+    element.innerHTML = this.initialContent;
 
     this.clampElement(element);
 
