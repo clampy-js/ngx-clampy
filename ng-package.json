@@ -1,6 +1,15 @@
 {
-    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "ngPackage": {
     "lib": {
-      "entryFile": "public_api.ts"
+      "entryFile": "src/public_api.ts"
     }
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "clampy-js",
+    "element-resize-detector",
+    "core-js",
+    "lodash-es",
+    "zone.js"
+  ]
+}

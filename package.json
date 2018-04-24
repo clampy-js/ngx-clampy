@@ -13,25 +13,18 @@
     "e2e": "ng e2e"
   },
   "dependencies": {
-    "@angular/animations": "^5.0.2",
-    "@angular/common": "^5.0.2",
-    "@angular/compiler": "^5.0.2",
-    "@angular/core": "^5.0.2",
-    "@angular/forms": "^5.0.2",
-    "@angular/http": "^5.0.2",
-    "@angular/platform-browser": "^5.0.2",
-    "@angular/platform-browser-dynamic": "^5.0.2",
-    "@angular/router": "^5.0.2",
     "@clampy-js/clampy": "^1.0.6",
     "core-js": "^2.5.1",
+    "element-resize-detector": "^1.1.14",
     "lodash-es": "^4.17.4",
-    "rxjs": "^5.5.2",
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
+    "@angular-devkit/core": "^0.5.7",
     "@angular/cli": "1.5.0",
     "@angular/compiler-cli": "^5.0.0",
     "@angular/language-service": "^5.0.0",
+    "@types/element-resize-detector": "^1.1.0",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
@@ -44,10 +37,22 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "ng-packagr": "^1.6.0",
+    "ng-packagr": "^2.4.2",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2"
+  },
+  "peerDependencies": {
+    "@angular/animations": "^5.0.2",
+    "@angular/common": "^5.0.2",
+    "@angular/compiler": "^5.0.2",
+    "@angular/core": "^5.0.2",
+    "@angular/forms": "^5.0.2",
+    "@angular/http": "^5.0.2",
+    "@angular/platform-browser": "^5.0.2",
+    "@angular/platform-browser-dynamic": "^5.0.2",
+    "@angular/router": "^5.0.2",
+    "rxjs": "^5.5.2"
   }
 }
