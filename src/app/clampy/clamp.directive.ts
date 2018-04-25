@@ -169,7 +169,7 @@ export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {
     // Set the opacity back to 1 now that the content is clamped.
     this.renderer.setStyle(element, 'opacity', 1);
 
-    if (result.original !== result.clamped) {
+    if (result.clamped && result.original !== result.clamped) {
       this.originalContent.emit(result.original);
     }
   }
