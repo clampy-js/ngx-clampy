@@ -1,6 +1,6 @@
 {
   "name": "@clampy-js/ngx-clampy",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Using clampy-js/clampy: Angular directive that clamps an HTML element by adding ellipsis to it if the content inside is too long.",
   "license": "MIT",
   "scripts": {
