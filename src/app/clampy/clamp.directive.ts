@@ -104,11 +104,11 @@ export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {
       if (isNil(this.clampyContent)) {
         this.initialContent = isEmpty(this.element.innerHTML)
           ? undefined
-          : this.element.innerHTML;
+          : this.element.innerHTML.trim();
       } else {
         this.initialContent = this.sanitizer.sanitize(
           SecurityContext.HTML,
-          this.clampyContent
+          this.clampyContent.trim()
         );
       }
     }
