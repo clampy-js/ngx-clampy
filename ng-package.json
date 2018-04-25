@@ -6,10 +6,6 @@
     }
   },
   "whitelistedNonPeerDependencies": [
-    "clampy-js",
-    "element-resize-detector",
-    "core-js",
-    "lodash-es",
-    "zone.js"
+    "."
   ]
 }
