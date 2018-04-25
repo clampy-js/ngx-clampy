@@ -42,3 +42,5 @@ testem.log
 Thumbs.db
 
 \.vscode/launch\.json
+
+dist\.tgz

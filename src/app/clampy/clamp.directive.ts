@@ -7,13 +7,15 @@ import {
   SecurityContext,
   Output,
   EventEmitter,
-  OnDestroy
-} from "@angular/core";
-import { DomSanitizer } from "@angular/platform-browser";
-import * as clampy_ from "@clampy-js/clampy/dist/clampy.umd.js";
-import * as elementResizeDetectorMaker_ from "element-resize-detector";
-import isEmpty from "lodash-es/isEmpty";
-import isNil from "lodash-es/isNil";
+  OnDestroy,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import * as clampy_ from '@clampy-js/clampy/dist/clampy.umd.js';
+import * as elementResizeDetectorMaker_ from 'element-resize-detector';
+import isEmpty from 'lodash-es/isEmpty';
+import isNil from 'lodash-es/isNil';
 
 // https://github.com/rollup/rollup/issues/670#issuecomment-284621537
 const clampy: any = (<any>clampy_).default || clampy_;
@@ -21,9 +23,9 @@ const elementResizeDetectorMaker: any =
   (<any>elementResizeDetectorMaker_).default || elementResizeDetectorMaker_;
 
 @Directive({
-  selector: "[clampy]"
+  selector: '[clampy]'
 })
-export class ClampDirective implements AfterViewInit, OnDestroy {
+export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {
   /*
    * This controls where and when to clamp the text of an element.
    * Submitting a number controls the number of lines that should be displayed.
@@ -69,7 +71,7 @@ export class ClampDirective implements AfterViewInit, OnDestroy {
   public originalContent: EventEmitter<string> = new EventEmitter<string>();
 
   private initialContent: string;
-  private resizeDetector = elementResizeDetectorMaker({ strategy: "scroll" });
+  private resizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
   private element: HTMLElement;
 
   constructor(
@@ -85,6 +87,12 @@ export class ClampDirective implements AfterViewInit, OnDestroy {
     this.resizeDetector.listenTo(this.element, () => {
       this.doClampElement(this.element);
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.clampy || changes.clampyContent || changes.clampyTruncationCharacter) {
+      this.doClampElement(this.element);
+    }
   }
 
   ngOnDestroy(): void {
@@ -112,7 +120,7 @@ export class ClampDirective implements AfterViewInit, OnDestroy {
     // it's scroll events.
     // The process of truncating the text for ellipsis removes this div, so we need to remove and readd it
     const scrollNode: Element = this.element.querySelector(
-      ".erd_scroll_detection_container"
+      '.erd_scroll_detection_container'
     );
     if (scrollNode) {
       this.element.removeChild(scrollNode);
@@ -134,8 +142,8 @@ export class ClampDirective implements AfterViewInit, OnDestroy {
   }
 
   private clampElement(element: HTMLElement): void {
-    let clampSize = "auto"; // Default clamp size based on available height
-    let truncationChar = "…";
+    let clampSize = 'auto'; // Default clamp size based on available height
+    let truncationChar = '…';
 
     if (this.clampy) {
       clampSize = this.clampy;
@@ -155,16 +163,14 @@ export class ClampDirective implements AfterViewInit, OnDestroy {
     };
 
     // Set the opactity to 0 to avoid content to flick when clamping.
-    this.renderer.setStyle(element, "opacity", 0);
+    this.renderer.setStyle(element, 'opacity', 0);
     const result = clampy.clamp(element, options);
 
     // Set the opacity back to 1 now that the content is clamped.
-    this.renderer.setStyle(element, "opacity", 1);
+    this.renderer.setStyle(element, 'opacity', 1);
 
     if (result.original !== result.clamped) {
       this.originalContent.emit(result.original);
-      // console.log('result.original', result.original);
-      console.log('result.clamped', result.clamped);
     }
   }
 }
