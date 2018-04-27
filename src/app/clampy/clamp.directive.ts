@@ -9,7 +9,8 @@ import {
   EventEmitter,
   OnDestroy,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  HostListener
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as clampy_ from '@clampy-js/clampy/dist/clampy.umd.js';
@@ -73,6 +74,11 @@ export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {
   private initialContent: string;
   private resizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
   private element: HTMLElement;
+
+  @HostListener('window:resize', ['$event'])
+  public onWindowResize(event: any): void {
+    this.doClampElement(this.element);
+  }
 
   constructor(
     private elementRef: ElementRef,
