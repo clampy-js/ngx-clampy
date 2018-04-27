@@ -1,1 +1,27 @@
-ngx-clampy
+# ngx-clampy
+
+### Angular (2+) directive that clamps the content of an element by adding an ellipsis to it if the content inside is too long.
+[![Build Status](https://img.shields.io/travis/clampy-js/ngx-clampy.svg)](https://travis-ci.org/clampy-js/ngx-clampy)
+[![GitHub issues](https://img.shields.io/github/issues/clampy-js/ngx-clampy.svg)](https://github.com/clampy-js/ngx-clampy/issues)
+[![GitHub license](https://img.shields.io/github/license/clampy-js/ngx-clampy.svg)](https://github.com/clampy-js/ngx-clampy/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/dt/@clampy-js/ngx-clampy.svg)]()
+
+It uses [@clampy-js/clampy](https://github.com/clampy-js/clampy) library (a fork of [Clamp.js](https://github.com/josephschmitt/Clamp.js)) behind the scene to apply the ellipsis.
+
+It automatically re-clamps itself when the element or the browser window change size.
+
+You can also listen to 'originalContent' event which is emitting the original vlue uppon clamping. This can be useful if you want to display the original content in a tooltip for instance.
+Example:
+
+```typescript
+<p clampy (originalContent)="getTooltipContent($event)">
+...
+</p>
+```
+
+#### Options
+|Option   |Type   |Default   |Description   |
+|---|---|---|---|
+|clampy   |string   |auto   |This controls where and when to clamp the text of an element. Submitting a number controls the number of lines that should be displayed. Second, you can submit a CSS value (in px or em) that controls the height of the element as a String. Finally, you can submit the word 'auto' as a string. Auto will try to fill up the available space with the content and then automatically clamp once content no longer fits.   |
+|clampyContent   |string   |undefined   |Sometimes you need to apply an ellipsis on HTML content. The prefered Angular way to usually do this is to bind the HTML content to the innerHTML attribute. However, this directive also modifies the innerHTML property and this may produce unexpected results. To counter this, you can instead bind it to the clampyContent attribute. The content will be automatically sanitized by the directive so that only safe HTML content will be present.|
+|clampyTruncationCharacter   |string   |…   |The character to insert at the end of the HTML element after truncation is performed. This defaults to an ellipsis (…).   |
