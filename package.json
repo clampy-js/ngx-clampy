@@ -7,23 +7,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "packagr": "ng-packagr -p ng-package.json",
+    "packagr": "ng-packagr -p src/package.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "semantic-release": "semantic-release",
+    "semantic-release": "cd dist && semantic-release; cd ..",
     "travis-deploy-once": "travis-deploy-once"
-  },
-  "release": {
-    "verifyConditions": [
-      "@semantic-release/npm"
-    ],
-    "publish": [
-      {
-        "path": "@semantic-release/npm",
-        "pkgRoot": "dist"
-      }
-    ]
   },
   "dependencies": {
     "@angular/animations": "^5.0.2",
