@@ -1,10 +1,6 @@
 {
   "rulesDirectory": [
-    "node_modules/codelyzer",
-    "node_modules/rxjs-tslint"
-  ],
-  "extends": [
-    "rxjs-tslint"
+    "node_modules/codelyzer"
   ],
   "rules": {
     "arrow-return-shorthand": true,
@@ -17,10 +13,6 @@
     "curly": true,
     "eofline": true,
     "forin": true,
-    "rxjs-collapse-imports": true,
-    "rxjs-pipeable-operators-only": true,
-    "rxjs-no-static-observable-methods": true,
-    "rxjs-proper-imports": true,
     "import-blacklist": [true, "rxjs/Rx"],
     "import-spacing": true,
     "indent": [
