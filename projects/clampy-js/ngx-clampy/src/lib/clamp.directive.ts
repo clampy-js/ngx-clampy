@@ -24,6 +24,7 @@ const elementResizeDetectorMaker: any =
   (<any>elementResizeDetectorMaker_).default || elementResizeDetectorMaker_;
 
 @Directive({
+  // tslint:disable-next-line:directive-selector
   selector: '[clampy]'
 })
 export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {

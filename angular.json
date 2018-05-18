@@ -117,16 +117,56 @@
           }
         }
       }
+    },
+    "@clampy-js/ngx-clampy": {
+      "root": "projects/clampy-js/ngx-clampy",
+      "sourceRoot": "projects/clampy-js/ngx-clampy/src",
+      "projectType": "library",
+      "prefix": "",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/clampy-js/ngx-clampy/tsconfig.lib.json",
+            "project": "projects/clampy-js/ngx-clampy/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/clampy-js/ngx-clampy/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/clampy-js/ngx-clampy/src/test.ts",
+            "tsConfig": "projects/clampy-js/ngx-clampy/tsconfig.spec.json",
+            "karmaConfig": "projects/clampy-js/ngx-clampy/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/clampy-js/ngx-clampy/tsconfig.lib.json",
+              "projects/clampy-js/ngx-clampy/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-clampy",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "clampy",
+      "prefix": "",
       "styleext": "css"
     },
     "@schematics/angular:directive": {
-      "prefix": "clampy"
+      "prefix": ""
     }
   }
 }

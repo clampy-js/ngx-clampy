@@ -12,8 +12,9 @@ notifications:
 node_js:
   - '9.5'
 before_script:
+  - npm install
   - npm prune
 script:
-  - npm run packagr
+  - npm run build:lib:prod
 after_success:
   - npm run semantic-release
