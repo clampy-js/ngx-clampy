@@ -3,5 +3,8 @@
   "dest": "../../../dist/clampy-js/ngx-clampy",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "clampy-js"
+  ]
 }
