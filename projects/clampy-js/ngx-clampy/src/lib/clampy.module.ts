@@ -5,6 +5,6 @@ import { ClampDirective } from './clamp.directive';
   imports: [
   ],
   declarations: [ClampDirective],
-  exports: []
+  exports: [ClampDirective]
 })
 export class ClampyModule { }
