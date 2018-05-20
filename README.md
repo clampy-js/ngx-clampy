@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/travis/clampy-js/ngx-clampy.svg)](https://travis-ci.org/clampy-js/ngx-clampy)
 [![GitHub issues](https://img.shields.io/github/issues/clampy-js/ngx-clampy.svg)](https://github.com/clampy-js/ngx-clampy/issues)
 [![GitHub license](https://img.shields.io/github/license/clampy-js/ngx-clampy.svg)](https://github.com/clampy-js/ngx-clampy/blob/master/LICENSE)
-[![npm](https://img.shields.io/npm/dt/@clampy-js/ngx-clampy.svg)]()
+[![npm](https://img.shields.io/npm/dt/@clampy-js/ngx-clampy.svg)](https://www.npmjs.com/package/@clampy-js/ngx-clampy)
 
 It uses [@clampy-js/clampy](https://github.com/clampy-js/clampy) library (a fork of [Clamp.js](https://github.com/josephschmitt/Clamp.js)) behind the scene to apply the ellipsis.
 
