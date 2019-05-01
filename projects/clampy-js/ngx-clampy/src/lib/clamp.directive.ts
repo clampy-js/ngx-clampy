@@ -64,6 +64,15 @@ export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {
   @Input() public clampyTruncationCharacter: string;
 
   /*
+   * A string of HTML to insert before the truncation character.
+   * This is useful if you'd like to add a "Read more" link or some such thing at the end of your clamped node.
+   *
+   * @type string
+   * @memberof ClampDirective
+   */
+  @Input() public clampyTruncationHTML: string;
+
+  /*
    * The original content before any ellipsis applied.
    *
    * @type EventEmitter<string>
@@ -97,7 +106,7 @@ export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.clampy || changes.clampyContent || changes.clampyTruncationCharacter) {
+    if (changes.clampy || changes.clampyContent || changes.clampyTruncationCharacter || changes.clampyTruncationHTML) {
       this.doClampElement(this.element);
     }
   }
@@ -151,6 +160,7 @@ export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {
   private clampElement(element: HTMLElement): void {
     let clampSize = 'auto'; // Default clamp size based on available height
     let truncationChar = '…';
+    let truncationHTML = '';
 
     if (this.clampy) {
       clampSize = this.clampy;
@@ -160,9 +170,14 @@ export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {
       truncationChar = this.clampyTruncationCharacter;
     }
 
+    if (this.clampyTruncationHTML) {
+      truncationHTML = this.clampyTruncationHTML;
+    }
+
     const options = {
       clamp: clampSize,
       truncationChar: truncationChar,
+      truncationHTML: truncationHTML,
       // Clampy will try to use native clamp if available in the browser
       // however this can leads to unexpected results so we need to explicitely
       // disable it.

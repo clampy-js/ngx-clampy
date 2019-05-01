@@ -25,6 +25,7 @@ Example:
 |clampy   |string   |auto   |This controls where and when to clamp the text of an element. Submitting a number controls the number of lines that should be displayed. Second, you can submit a CSS value (in px or em) that controls the height of the element as a String. Finally, you can submit the word 'auto' as a string. Auto will try to fill up the available space with the content and then automatically clamp once content no longer fits.   |
 |clampyContent   |string   |undefined   |Sometimes you need to apply an ellipsis on HTML content. The prefered Angular way to usually do this is to bind the HTML content to the innerHTML attribute. However, this directive also modifies the innerHTML property and this may produce unexpected results. To counter this, you can instead bind it to the clampyContent attribute. The content will be automatically sanitized by the directive so that only safe HTML content will be present.|
 |clampyTruncationCharacter   |string   |…   |The character to insert at the end of the HTML element after truncation is performed. This defaults to an ellipsis (…).   |
+|clampyTruncationHTML   |string   |…   |A string of HTML to insert before the truncation character. This is useful if you'd like to add a "Read more" link or some such thing at the end of your clamped node.   |
 
 #### Installation
 You can install @clampy-js/ngx-clampy using NPM or Yarn:
