@@ -1,6 +1,7 @@
 language: node_js
 branches:
   only:
+    - master
     - 7.0.x
     - /^greenkeeper/.*$/
 notifications:
