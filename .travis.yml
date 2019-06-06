@@ -1,12 +1,8 @@
 language: node_js
 branches:
   only:
-    - master
+    - 7.0.x
     - /^greenkeeper/.*$/
-cache:
-  yarn: true
-  directories:
-    - node_modules
 notifications:
   email: false
 node_js:
