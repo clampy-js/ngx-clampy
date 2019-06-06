@@ -7,7 +7,7 @@ branches:
 notifications:
   email: false
 node_js:
-  - '9.5'
+  - '12.4.0'
 before_script:
   - npm install
   - npm prune
