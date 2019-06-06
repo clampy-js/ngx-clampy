@@ -30,6 +30,7 @@ Example:
 #### Installation
 For Angular 2 up to version 6, use version 1.3.x.
 For angular 7, use version 7.0.x.
+For angular 8, use version 8.0.x.
 
 You can install @clampy-js/ngx-clampy using NPM or Yarn:
 
