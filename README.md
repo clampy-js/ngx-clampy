@@ -50,4 +50,3 @@ Note: Starting from version 1.3.0, @clampy-js/ngx-clampy requires the following 
 - lodash-es
 
 Simply check the warnings in the console to know which exact versions are required.
-
