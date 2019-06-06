@@ -28,6 +28,9 @@ Example:
 |clampyTruncationHTML   |string   |…   |A string of HTML to insert before the truncation character. This is useful if you'd like to add a "Read more" link or some such thing at the end of your clamped node.   |
 
 #### Installation
+For Angular 2 up to version 6, use version 1.3.x.
+For angular 7, use version 1.4.x.
+
 You can install @clampy-js/ngx-clampy using NPM or Yarn:
 
 ```
@@ -47,3 +50,5 @@ Note: Starting from version 1.3.0, @clampy-js/ngx-clampy requires the following 
 - lodash-es
 
 Simply check the warnings in the console to know which exact versions are required.
+
+
