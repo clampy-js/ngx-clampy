@@ -11,7 +11,7 @@
 
 
 <div>
-    <p [clampy]="clampyValue">{{originalContent}}</p>
+    <p [clampy]="clampyValue" (originalContent)="originalContentEmmited($event)" (isClamped)="isClampedEmmited($event)">{{originalContent}}</p>
 </div>
 
 <h1>Clamped async content</h1>

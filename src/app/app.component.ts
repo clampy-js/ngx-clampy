@@ -24,4 +24,12 @@ export class AppComponent implements OnInit {
   public increment(): void {
     this.clampyValue++;
   }
+
+  public originalContentEmmited(value: string): void {
+    console.log('originalContent', value);
+  }
+
+  public isClampedEmmited(value: boolean): void {
+    console.log('isClamped', value);
+  }
 }

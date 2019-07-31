@@ -71,6 +71,15 @@ export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {
   @Output()
   public originalContent: EventEmitter<string> = new EventEmitter<string>();
 
+  /*
+   * True if ellipsis has been applied, false otherwise.
+   *
+   * @type EventEmitter<boolean>
+   * @memberof ClampDirective
+   */
+  @Output()
+  public isClamped: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   private initialContent: string;
   private resizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
   private element: HTMLElement;
@@ -177,6 +186,9 @@ export class ClampDirective implements AfterViewInit, OnChanges, OnDestroy {
 
     if (result.clamped && result.original !== result.clamped) {
       this.originalContent.emit(result.original);
+      this.isClamped.emit(true);
+    } else {
+      this.isClamped.emit(false);
     }
   }
 }
