@@ -1,0 +1,18 @@
+{
+  "name": "@clampy-js/ngx-clampy",
+  "version": "0.0.0-semantic-released",
+  "description": "Using clampy-js/clampy: Angular directive that clamps an HTML element by adding ellipsis to it if the content inside is too long.",
+  "license": "MIT",
+  "repository": "git@github.com:clampy-js/ngx-clampy.git",
+  "author": "Alexandre Moore <alexandre.moore@gmail.com>",
+  "dependencies": {
+    "@clampy-js/clampy": "^1.0.10"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=8.0.0 <9.0.0",
+    "@angular/platform-browser": ">=8.0.0 <9.0.0",
+    "@angular/core": ">=8.0.0 <9.0.0",
+    "element-resize-detector": "^1.1.14",
+    "lodash-es": "^4.17.4"
+  }
+}

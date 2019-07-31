@@ -2,18 +2,16 @@ language: node_js
 branches:
   only:
     - master
+    - 7.0.x
     - /^greenkeeper/.*$/
-cache:
-  yarn: true
-  directories:
-    - node_modules
 notifications:
   email: false
 node_js:
-  - '9.5'
+  - '12.4.0'
 before_script:
+  - npm install
   - npm prune
 script:
-  - npm run packagr
+  - npm run build:lib:prod
 after_success:
   - npm run semantic-release
